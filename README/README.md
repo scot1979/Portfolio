@@ -22,6 +22,7 @@ This document contains the following details:
 - How to Use the Ansible Build
 
 
+
 ### Description of the Topology
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
@@ -39,6 +40,7 @@ The configuration details of each machine may be found below.
 | Web 2         | Web Server      | 10.0.0.6   | Ubuntu Linux     |
 | Web 3         | Web Server      | 10.0.0.7   | Ubuntu Linux     |
 | ELK Stack     | Data Analytics  | 10.1.0.4   | Ubuntu Linux     |
+
 
 
 ### Access Policies
@@ -62,6 +64,7 @@ A summary of the access policies in place can be found in the table below.
 | ELK Stack     | Yes                 | 10.0.0.4, Personal       |                
 
 
+
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because automation allows you to easily spin up a new virtual machine with your chosen configurations.
@@ -79,6 +82,7 @@ The playbook implements the following tasks:
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 ![alt text](Images/docker_ps_output.png)
+
 
 
 ### Target Machines & Beats
@@ -99,6 +103,7 @@ These Beats allow us to collect the following information from each machine:
 > Filebeats collects changes to server logs. For example, filebeats can collect audit logs, which documents which resources were accessed at which time. 
 
 > Metricbeats collects periodic metrics and statistics from the server that is can then be parsed, analyzed, and visualed. For example, metricbeats can regularly collect data for CPU usage, which can then be visualized in Kabana. 
+
 
 
 ### Using the Playbook
