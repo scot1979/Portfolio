@@ -40,6 +40,7 @@ The configuration details of each machine may be found below.
 | Web 3         | Web Server      | 10.0.0.7   | Ubuntu Linux     |
 | ELK Stack     | Data Analytics  | 10.1.0.4   | Ubuntu Linux     |
 
+
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
@@ -59,6 +60,7 @@ A summary of the access policies in place can be found in the table below.
 | Web 2         | No                  | 10.0.0.4                 |
 | Web 3         | No                  | 10.0.0.4                 |               
 | ELK Stack     | Yes                 | 10.0.0.4, Personal       |                
+
 
 ### Elk Configuration
 
