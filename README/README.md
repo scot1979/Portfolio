@@ -89,14 +89,14 @@ This ELK server is configured to monitor the following machines:
 	Web 3: 10.0.0.7
 
 We have installed the following Beats on these machines:
-	Filebeats
-	Metricbeats
+Filebeats
+Metricbeats
 	
 These Beats allow us to collect the following information from each machine:
-	
-	Filebeats collects changes to server logs. For example, filebeats can collect audit logs, which documents which resources were accessed at which time. 
-	
-	Metricbeats collects periodic metrics and statistics from the server that is can then be parsed, analyzed, and visualed. For example, metricbeats can regularly collect data for CPU usage, which can then be visualized in Kabana. 
+
+Filebeats collects changes to server logs. For example, filebeats can collect audit logs, which documents which resources were accessed at which time. 
+
+Metricbeats collects periodic metrics and statistics from the server that is can then be parsed, analyzed, and visualed. For example, metricbeats can regularly collect data for CPU usage, which can then be visualized in Kabana. 
 
 
 ### Using the Playbook
