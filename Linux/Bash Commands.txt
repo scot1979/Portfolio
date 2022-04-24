@@ -155,7 +155,32 @@ $ tar <options> <archive name>
 ex. tar xvf backup-10-11-2020.tar
     where x=extract, v=verbose, f=name archive
     
+
+Create an incremental backup of the log files in emergency directory
+$ sudo tar <options> --listed-incremental=<incremental_archive_name> --level=<incremental backup number in series> <objects to archive>
+ex. sudo tar cvvWf emerg_back_sun.tar --listed-incremental=emerg_backup.snar --level=0 emergency 
+    where c=create, vv=very verbose, W=verified, f=name archive, level 0=first incremental backup in series
     
+
+List files added to incremental tar file
+$ sudo tar tvvf <tarfile_name> --incremental|less
+
+
+Extract incremental backup to current directory
+$ sudo tar <options> <incremental_archive_name> --incremental 
+ex. sudo tar xvvf emerg_back_sun.tar --incremental 
+
+
+Edit crontab (cron table) file for backup automation
+$ crontab -e
+
+
+Crontab file command syntax 
+$ 36 2 * * 7 root/usr/local/sbin.backup.sh
+    Executes backup .sh script every Sunday at 2:36 a.m. 
+    where 36=minutes, 2=hours, *=day of the month, *=month, 7=Sunday (Mon=1, Tues=2 etc.), root=execute as      root user
+    
+
 Search for a word in a file or directory of files
 $ grep <search term--case sensitive by default> <filepath>
 Display instructions for the grep command
