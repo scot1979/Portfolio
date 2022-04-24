@@ -134,6 +134,28 @@ Run executable sh file in current directory
 $ ./<filename.sh>
 
 
+Create a full backup of the log files in /var/log directory
+$ sudo tar <options> <archive_name> <objects to archive>
+ex. sudo tar cvf 10-11-2020backup.tar /var/log 
+    where c=create, v=verbose, f=name archive
+
+
+Compress archive
+$ gzip <tar file name>
+ex. gzip 10-11-2020backup.tar
+
+
+Decompress archive
+$ gunzip <tar.gz file name>
+ex. gunzip 10-11-2020backup.tar.gz
+
+
+Extract backup to current directory
+$ tar <options> <archive name>
+ex. tar xvf backup-10-11-2020.tar
+    where x=extract, v=verbose, f=name archive
+    
+    
 Search for a word in a file or directory of files
 $ grep <search term--case sensitive by default> <filepath>
 Display instructions for the grep command
