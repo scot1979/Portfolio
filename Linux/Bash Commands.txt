@@ -50,6 +50,15 @@ Clear terminal history of a page
 $ clear
 
 
+Show all running processes in real time
+$ top
+
+Take snapshot of all running processes (and use output with other commands, ex. grep)
+$ ps
+
+Stop processes with process id (PID) obtained through top or ps commands
+$ kill <PID>
+
 Print one file’s contents to screen
 $ cat <file name in current directory>
 
