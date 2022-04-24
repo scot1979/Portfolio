@@ -178,7 +178,7 @@ $ crontab -e
 Crontab file command syntax 
 $ 36 2 * * 7 root/usr/local/sbin.backup.sh
     Executes backup .sh script every Sunday at 2:36 a.m. 
-    where 36=minutes, 2=hours, *=day of the month, *=month, 7=Sunday (Mon=1, Tues=2 etc.), root=execute as      root user
+    where 36=minutes, 2=hours, *=day of the month, *=month, 7=Sunday (Mon=1, Tues=2 etc.), root=execute as root user
     
 
 Search for a word in a file or directory of files
