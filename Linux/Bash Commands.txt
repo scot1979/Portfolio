@@ -62,6 +62,15 @@ Stop processes with process id (PID) obtained through top or ps commands
 $ kill <PID>
 
 
+Install packages (downloadable software for Linux)
+$ sudo apt install <package name>
+
+
+Search for available packages 
+$ sudo apt search <pattern>
+ex. sudo apt search python
+
+
 Print one file’s contents to screen
 $ cat <file name in current directory>
 
