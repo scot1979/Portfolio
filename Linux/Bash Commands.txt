@@ -171,7 +171,7 @@ $ sudo tar <options> <incremental_archive_name> --incremental
 ex. sudo tar xvvf emerg_back_sun.tar --incremental 
 
 
-Edit crontab (cron table) file for backup automation
+Edit crontab (cron table) daemon file for backup automation
 $ crontab -e
 
 
