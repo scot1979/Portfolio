@@ -62,13 +62,27 @@ Stop processes with process id (PID) obtained through top or ps commands
 $ kill <PID>
 
 
-Install packages (downloadable software for Linux)
-$ sudo apt install <package name>
-
-
 Search for available packages 
 $ sudo apt search <pattern>
 ex. sudo apt search python
+
+
+Install packages (downloadable software for Linux)
+$ sudo apt install <package name>
+ex. sudo apt install lynis
+
+
+Run an audit
+$ sudo lynis audit system
+
+
+See command documentation
+$ man <command>
+ex. man chkrootkit
+
+
+Run chkrootkit in expert mode
+$ sudo chkrootkit -x
 
 
 Print one file’s contents to screen
@@ -171,7 +185,7 @@ $ sudo tar <options> <incremental_archive_name> --incremental
 ex. sudo tar xvvf emerg_back_sun.tar --incremental 
 
 
-Edit crontab (cron table) daemon file for backup automation
+Edit crontab (cron table) daemon file (var/log/cron.log) for backup automation
 $ crontab -e
 
 
@@ -180,6 +194,31 @@ $ 36 2 * * 7 root/usr/local/sbin.backup.sh
     Executes backup .sh script every Sunday at 2:36 a.m. 
     where 36=minutes, 2=hours, *=day of the month, *=month, 7=Sunday (Mon=1, Tues=2 etc.), root=execute as root user
     
+
+Edit logrotate.d/mail file to automate mail log rotation and add rotation scripts
+$ sudo nano <logrotate_file_name>
+ex. sudo nano /etc/logrotate.d/mail
+
+        /var/log/mail.log {
+           daily
+           rotate 56
+           create
+           missingok
+           notifempty
+        }
+
+
+*where daily=how often log is rotated, rotate 56=keep 56 days of logs, create=create new log when rotated, missingok=ok if file is missing, notifempty=don't add if file is empty 
+
+
+View journal real-time messages
+$ journalctl -ef
+     where e=display end of journal, f=enable follow mode to display real-time messages 
+
+
+View systemd-journald logs for a specified user
+$ journalctl _UID=<user ID number found in /etc/passwd>
+
 
 Search for a word in a file or directory of files
 $ grep <search term--case sensitive by default> <filepath>
@@ -303,27 +342,6 @@ $ sudo addgroup <groupname ex. engineers, sales>
 
 Add already existing user to managed group
 $ sudo usermod -aG <groupname> <username>
-
-
-Install Lynis
-$ sudo apt install lynis
-
-
-Run an audit
-$ sudo lynis audit system
-
-
-Install chkrootkit
-$ sudo apt install chkrootkit
-
-
-See chkrootkit documentation
-$ man chkrootkit
-
-
-Run chkrootkit in expert mode
-$ sudo chkrootkit -x
-
 
 
 
